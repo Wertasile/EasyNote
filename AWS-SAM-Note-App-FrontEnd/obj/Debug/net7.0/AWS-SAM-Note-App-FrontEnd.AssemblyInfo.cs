@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AWS-SAM-Note-App-FrontEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c84ddbfa629cfce6294ca9cc3950b56037ac8e3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AWS-SAM-Note-App-FrontEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AWS-SAM-Note-App-FrontEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
