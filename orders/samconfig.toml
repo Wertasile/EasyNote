@@ -1,0 +1,9 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "AWS-SAM-Note-App-Notes"
+resolve_s3 = true
+s3_prefix = "AWS-SAM-Note-App-Notes"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "UserPool=\"us-east-1_vgL4RXCLo\""
+image_repositories = []

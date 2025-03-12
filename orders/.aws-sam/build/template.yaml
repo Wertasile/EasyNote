@@ -1,0 +1,216 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'SAM Template for notes
+
+  '
+Globals:
+  Api:
+    TracingEnabled: true
+    Cors:
+      AllowMethods: '''GET,POST,PUT,DELETE,OPTIONS'''
+      AllowHeaders: '''Content-Type,Authorization'''
+      AllowOrigin: '''*'''
+Parameters:
+  UserPool:
+    Type: String
+    Description: User Pool ID produced by the Users module
+Resources:
+  NotesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: userId
+        AttributeType: S
+      - AttributeName: noteId
+        AttributeType: S
+      KeySchema:
+      - AttributeName: userId
+        KeyType: HASH
+      - AttributeName: noteId
+        KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+  WorkshopApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Cors:
+        AllowMethods: '''GET,POST,PUT,DELETE,OPTIONS'''
+        AllowHeaders: '''Content-Type,Authorization'''
+        AllowOrigin: '''*'''
+      Auth:
+        DefaultAuthorizer: Module3CognitoAuthorizer
+        Authorizers:
+          Module3CognitoAuthorizer:
+            UserPoolArn:
+              Fn::Sub: arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${UserPool}
+  OptionsHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: OptionsHandlerFunction
+      Handler: options_handler.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: OPTIONS
+            RestApiId:
+              Ref: WorkshopApiGateway
+            Auth:
+              Authorizer: NONE
+    Metadata:
+      SamResourceId: OptionsHandlerFunction
+  AddNoteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: AddNoteFunction
+      Handler: create_note.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: NotesTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: NotesTable
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /notes
+            Method: post
+            RestApiId:
+              Ref: WorkshopApiGateway
+    Metadata:
+      SamResourceId: AddNoteFunction
+  GetNoteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: GetNoteFunction
+      Handler: get_note.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: NotesTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: NotesTable
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /notes/{noteId}
+            Method: get
+            RestApiId:
+              Ref: WorkshopApiGateway
+    Metadata:
+      SamResourceId: GetNoteFunction
+  ListNotesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ListNotesFunction
+      Handler: list_notes.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+        DynamoDBReadPolicy:
+          TableName:
+            Ref: NotesTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: NotesTable
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /notes
+            Method: get
+            RestApiId:
+              Ref: WorkshopApiGateway
+    Metadata:
+      SamResourceId: ListNotesFunction
+  EditNoteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: EditNoteFunction
+      Handler: edit_note.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName:
+            Ref: NotesTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: NotesTable
+      Layers:
+      - Ref: PyUtils
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /notes/{noteId}
+            Method: put
+            RestApiId:
+              Ref: WorkshopApiGateway
+    Metadata:
+      SamResourceId: EditNoteFunction
+  DeleteNoteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: DeleteNoteFunction
+      Handler: delete_note.lambda_handler
+      Runtime: python3.10
+      Tracing: Active
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName:
+            Ref: NotesTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: NotesTable
+      Layers:
+      - Ref: PyUtils
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /notes/{noteId}
+            Method: delete
+            RestApiId:
+              Ref: WorkshopApiGateway
+    Metadata:
+      SamResourceId: DeleteNoteFunction
+  PyUtils:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: pyutils
+      Description: Shared utilities for Orders service
+      ContentUri: PyUtils
+      CompatibleRuntimes:
+      - python3.10
+      RetentionPolicy: Delete
+    Metadata:
+      BuildMethod: python3.10
+      SamResourceId: PyUtils
+Outputs:
+  NotesServiceEndpoint:
+    Description: API Gateway endpoint URL
+    Value:
+      Fn::Sub: https://${WorkshopApiGateway}.execute-api.${AWS::Region}.amazonaws.com/Prod
+  NotesTable:
+    Description: DynamoDb Notes Table
+    Value:
+      Ref: NotesTable

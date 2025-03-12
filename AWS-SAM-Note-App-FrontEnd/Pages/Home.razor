@@ -1,0 +1,139 @@
+@page "/home"
+@inject NotesService NotesService
+
+<div class="container-fluid g-0 h-100">
+    <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-4 col-sm-4 col-md-2">
+            <Sidebar OnAddNote="ShowAddNote"></Sidebar>
+        </div>
+        <!-- NOTEBAR -->
+         <div class="col-4 col-sm-4 col-md-2 bg-dark p-2">
+                <div><h3>NOTES</h3></div>
+                <div class="d-flex flex-row justify-content-between opacity-50">
+                    <div>
+                        @Notes.Count() note
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div><i class="bi bi-funnel px-1 sidebar-item"></i></div>
+                    <div><i class="bi bi-sort-down px-1 sidebar-item"></i></div>
+                    </div>
+                </div>
+                
+                
+
+
+                @if (Notes == null || !Notes.Any())
+                {
+                    <div>LOADING</div>
+                }
+                else
+                {   <div class="d-flex flex-column">
+                        
+                            @foreach (var note in Notes)
+                            {
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div @onclick="() => EditNote(note)">@note.NoteTitle</div>
+                                    <div @onclick="() => DeleteNoteAsync(note.NoteId)"><i class="bi bi-trash3"></i></div>
+                                </div>
+                            }
+                        
+                    </div>
+                
+                }
+
+                
+        </div>
+
+        <!-- NOTE -->
+
+        
+        <div class="col-4 col-sm-4 col-md-8 p-2">
+            <h3>@(IsEditing ? "Edit Note" : "Add Note")</h3>
+
+            <input class="input-decor" @bind="NewNote.NoteTitle" placeholder="Title" />
+            <textarea @bind="NewNote.NoteContent" placeholder="Enter note content" />
+            <input class="input-decor" @bind="NewNote.NoteCategory" placeholder="Enter note category" />
+            <div @onclick="() => (IsEditing ? UpdateNoteAsync() : AddNoteAsync())">
+                @if (IsEditing == true)
+                {
+                    <div class="sidebar-item">
+                        <i class="bi bi-file-earmark-plus px-1"></i>
+                        <span>Save Changes</span>
+                    </div>
+                    
+                }
+                else{
+                    <div class="sidebar-item">
+                        <i class="bi bi-file-earmark-plus px-1"></i>
+                        <span>Add Note</span>
+                    </div>
+                }
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+
+@code {
+    private List<Note> Notes { get; set; } = new();
+    private Note NewNote { get; set; } = new();
+    private bool IsEditing { get; set; } = false;
+
+    private void ShowAddNote()
+    {
+        IsEditing = false;
+        NewNote = new();
+    }
+
+    // function to perform on page load
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadNotesAsync();
+        IsEditing = false;
+    }
+
+    // function to perform based on user interaction
+    private async Task LoadNotesAsync()
+    {
+        Notes = await NotesService.GetNotesAsync();
+    }
+
+    private async Task AddNoteAsync()
+    {
+        await NotesService.AddNoteAsync(NewNote);
+        NewNote = new();
+        await LoadNotesAsync();
+    }
+
+    // FOR EDITING, WE FIRST CREATE A NEW NOTE, UPON ENTERING THE EDIT NOTE PAGE VIA THE EDIT NOTE FUNCTION, THEN WE PERFORM THE ASYNC UPDATE
+    
+    private void EditNote(Note note)
+    {
+        NewNote = new Note {
+                NoteId = note.NoteId,
+                NoteTitle = note.NoteTitle,
+                NoteContent = note.NoteContent,
+                NoteCategory = note.NoteCategory,
+                NoteTime = DateTime.Now.ToString()
+    };
+        IsEditing = true;
+    }
+
+    private async Task UpdateNoteAsync()
+    {
+        await NotesService.UpdateNoteAsync(NewNote);
+        NewNote = new();
+        IsEditing = false;
+        await LoadNotesAsync();
+    }
+
+    private async Task DeleteNoteAsync(string noteId)
+    {
+        await NotesService.DeleteNoteAsync(noteId);
+        await LoadNotesAsync();
+    }
+}

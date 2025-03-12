@@ -1,0 +1,4 @@
+pytest
+pytest-order
+boto3
+requests

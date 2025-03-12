@@ -1,0 +1,69 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\obj\\Debug\\net7.0\\compressed\\b9j68ncqqw.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.json"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.scss",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.scss"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\lib\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\lib\\fonts\\bootstrap-icons.woff2"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AWS-SAM-Note-App-FrontEnd.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.AWS-SAM-Note-App-FrontEnd.props",
+      "PackagePath": "build\\AWS-SAM-Note-App-FrontEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.AWS-SAM-Note-App-FrontEnd.props",
+      "PackagePath": "buildMultiTargeting\\AWS-SAM-Note-App-FrontEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.AWS-SAM-Note-App-FrontEnd.props",
+      "PackagePath": "buildTransitive\\AWS-SAM-Note-App-FrontEnd.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

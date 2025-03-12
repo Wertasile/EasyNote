@@ -1,0 +1,35 @@
+﻿@using AWS_SAM_Note_App_FrontEnd.Pages
+@inject NoteState NoteState
+@inject NavigationManager Navigation
+
+<div class="d-flex flex-column px-3 bg-dark bg-gradient vh-100 ">
+    <!-- TITLE -->
+    <div class="sidebar-header"><h3>NOTEPAD(3)</h3></div>
+    <!-- USER PROFILE -->
+    <div class="sidebar-profile"><i class="bi bi-person-circle px-1"></i>@NoteState.username</div>
+    
+    <!-- MENU ITEMS -->
+    <div class="d-flex flex-column sidebar-menu">
+        <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-house px-1"></i>Add Note</div>
+        <div class="sidebar-item"><i class="bi bi-house px-1"></i>Home</div>
+        <div class="sidebar-item"><i class="bi bi-sticky px-1"></i>Notes</div>
+        <div class="sidebar-item"><i class="bi bi-bookmark px-1"></i>Shortcuts</div>
+        <div class="sidebar-item"><i class="bi bi-calendar-event px-1"></i>Calendar</div>
+        <div class="sidebar-item"><i class="bi bi-tag px-1"></i>Categories</div>
+        <div class="sidebar-item"><i class="bi bi-share px-1"></i>Shared</div>
+    </div>
+    
+</div>
+
+@code {
+    [Parameter]
+
+    public EventCallback OnAddNote { get; set; }
+
+    private async Task OnAddNoteClicked()
+    {
+        await OnAddNote.InvokeAsync(); // Properly trigger the callback
+        Navigation.NavigateTo("/home");
+    }
+
+}
