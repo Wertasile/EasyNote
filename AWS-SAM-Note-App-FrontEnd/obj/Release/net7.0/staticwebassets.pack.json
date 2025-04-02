@@ -25,6 +25,30 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.json"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\bootstrap-icons.scss",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons.scss"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\lib\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\lib\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\lib\\fonts\\bootstrap-icons.woff2"
+    },
+    {
       "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.AWS-SAM-Note-App-FrontEnd.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

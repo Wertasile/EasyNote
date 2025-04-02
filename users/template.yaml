@@ -40,6 +40,8 @@ Resources:
       Environment:
         Variables:
           USERS_TABLE: !Ref UsersTable
+          COGNITO_USER_POOL_ID: !Ref UserPool
+          COGNITO_CLIENT_ID: !Ref UserPoolClient
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref UsersTable
@@ -61,7 +63,7 @@ Resources:
         UpdateUserEvent:
           Type: Api
           Properties:
-            Path: /users/{userid}
+            Path: /users/{accessToken}
             Method: put
             RestApiId: !Ref RestAPI
         GetUserEvent:
@@ -76,11 +78,23 @@ Resources:
             Path: /users/{userid}
             Method: delete
             RestApiId: !Ref RestAPI
+        OptionsEvent:
+          Type: Api
+          Properties:
+            Path: "/{proxy+}"
+            Method: OPTIONS
+            RestApiId: !Ref RestAPI
+            Auth:
+              Authorizer: NONE
 
   RestAPI:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
+      Cors:
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,Authorization'"
+        AllowOrigin: "'*'"
       TracingEnabled: true
       Tags:
         Name: !Sub "${AWS::StackName}-API"

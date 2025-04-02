@@ -1,8 +1,5 @@
-using System.Net.Http;
+
 using System.Net.Http.Json;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Amazon.DynamoDBv2.DataModel;
 using Blazored.LocalStorage;
 
 public class NotesService

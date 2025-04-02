@@ -5,8 +5,10 @@
 @inject NoteState NoteState
 
 <div class="px-1">
-    <div><h3>Login</h3></div>
-    <div class=" mw-500px">
+    <div>
+        <h3>LOGIN</h3>
+    </div>
+    <div class="mw-500px">
         <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -16,17 +18,18 @@
                 <InputText @bind-Value="loginModel.Username" class="form-control" placeholder="Enter email" />
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <InputText @bind-Value="loginModel.Password" class="form-control" placeholder="Password" type="password" />
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                </div>
+
+            <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                special characters, or emoji.
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="submit" class="btn btn-primary">Login</button>
 
         </EditForm>
     </div>
@@ -35,24 +38,43 @@
 
 
 @code {
+    Dictionary<String, String> Tokens;
 
     private LoginModel loginModel = new LoginModel();
 
-    private async Task HandleLogin()
+    private class LoginModel
     {
-        var idToken = await AuthService.SignInAsync(loginModel.Username, loginModel.Password); // get access token from AuthService SignIn METHO
-        if (!string.IsNullOrEmpty(idToken))
+        public string Password { get; set; }
+        public string Username { get; set; }
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Tokens = await localStorage.GetItemAsync<Dictionary<String, String>>("tokens");
+        if (Tokens != null)
         {
-            // Store token securely and navigate to the app's main page
-            await localStorage.SetItemAsync("id_token", idToken);
-            NoteState.username = loginModel.Username;
+            Console.WriteLine("Tokens are" + Tokens);
             Navigation.NavigateTo("/home");
         }
     }
 
-    public class LoginModel
+
+
+    private async Task HandleLogin()
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        Tokens = await AuthService.SignInAsync(loginModel.Username, loginModel.Password);
+        // get access token from AuthService SignIn METHO
+        @* if (!string.IsNullOrEmpty(idToken))
+        { *@
+        // Store token securely and navigate to the app's main page
+        await localStorage.SetItemAsync("tokens", Tokens);
+        await localStorage.SetItemAsync("id_token", Tokens["id_token"]);
+        await localStorage.SetItemAsync("access_token", Tokens["access_token"]);
+        NoteState.username = loginModel.Username;
+        Navigation.NavigateTo("/home");
+        //}
     }
+
+
 }

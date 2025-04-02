@@ -1,7 +1,7 @@
 {
   "entryAssembly": "AWS-SAM-Note-App-FrontEnd",
   "resources": {
-    "hash": "sha256-Ik/Qzk04PDj9yiUdKIAJHhYVmoTqIIkFs0CERgdEGbc=",
+    "hash": "sha256-vW3QJgFRy0MCaEPHhk+yEtbz6MrrkhVm+YRbqY/BnUQ=",
     "runtime": {
       "dotnet.7.0.20.bl5pfofb6c.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -24,6 +24,9 @@
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-uyN0L7t6VFUm3ZbOUfdqsL1B2B5zztk6NdoJzbyZKdY=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-ecggAD0m8Nfz7rxgDHriZVSqjAmNHqoTT6xHnRx/pwU=",
       "Microsoft.AspNetCore.Metadata.dll": "sha256-XWZE0MPVLuLPVAegFKQPS09aa94oGNnImQsjzL5VH0o=",
+      "Microsoft.Bcl.AsyncInterfaces.dll": "sha256-E21ZZc9HaOhCC1R6i93qiCkh9CbDcYM9VYqFii8MI1o=",
+      "Microsoft.Bcl.Memory.dll": "sha256-eXZfjWqGsOYpGTigI5ONFwkcixxlxtUcrvQxloHZgzc=",
+      "Microsoft.Bcl.TimeProvider.dll": "sha256-RM+GnDUVPFEFBQUq2FNk91kaeRNCvV5PUsjcbdGB2E8=",
       "Microsoft.Extensions.Configuration.dll": "sha256-PqQvp77oZ4+uuy2ElXk8AU9I6RfZSf18UGTrd4rulOo=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-CnS3b9EMFQmETBUVEgtcron4DBsfFdcVt3zfCP6Uflg=",
       "Microsoft.Extensions.Configuration.Binder.dll": "sha256-em/Vt/2aVlDQPuXI8gSU7RHK2IflCprFUyVvpA0UefI=",
@@ -38,8 +41,13 @@
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-7zoKnNaWqWOrjF2eX3dFetJL+I03xqvCzORtFB4Ws08=",
       "Microsoft.Extensions.Options.dll": "sha256-rYT8laJlOlF0qyGuqjSmgDWb3Mk5aO1P2d9ojmaAuL0=",
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
+      "Microsoft.IdentityModel.Abstractions.dll": "sha256-FOD253f2SfUNXpLUy0WFGDFaX2IHKKrLc8sy/kYe6BM=",
+      "Microsoft.IdentityModel.JsonWebTokens.dll": "sha256-kumlxA4lWYSWVQRD4pwSvgQgj0+9byuCv8DdiklkfKc=",
+      "Microsoft.IdentityModel.Logging.dll": "sha256-XDePwQtE5x/0kBR6wMf2ql/YOqFhHMh1qbw5J9k9Sbw=",
+      "Microsoft.IdentityModel.Tokens.dll": "sha256-YRP5OfhbxIQro9Rz7Gi23WZMl8WHi35ccBuCPpKjFPM=",
       "Microsoft.JSInterop.dll": "sha256-T+pG2hbrk10uql1R419lLDE6hBrt97SyDPfQOqHJlZ0=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-GDmvW5LjkyTqyRZAdmYZ1EYwAsZ5NBruoynTP069E2w=",
+      "System.IdentityModel.Tokens.Jwt.dll": "sha256-cjMrucPFLRIWRmLitaZ+XGm6n5sqOy88NhOmRl3QRWA=",
       "System.IO.Pipelines.dll": "sha256-P/MqD0fCBd5bgTM16JC1QC/Zz7s+CwViyzmDFkBG4/c=",
       "System.Net.Http.Json.dll": "sha256-kuMWh9Xb2gHKaRTI/kHkRDGSIh4BJ39IaggV/yPrRHc=",
       "System.Text.Encodings.Web.dll": "sha256-cuXJCAMxWcZ2EaBvm9vFAVMtBPzaPrEpZ7uiS9kjUPQ=",
@@ -209,10 +217,10 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-B/k++gfBFK5XDQGBdJ6OJ6//CdaAprpXEFKEgTCR+5g="
+      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-/3Aupl0/n/QF8yanvWmGTmuQyEzcEUQS4uwDN5qQzVM="
     },
     "pdb": {
-      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-x7YKIiRifeZP/qQ0jNFEbpS3FMb5lloLc/idznrN/dc="
+      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-hDULmZLNZdDe9M0vvc2Xggo/BYpi8KlqkvaE5JSR6go="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

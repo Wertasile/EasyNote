@@ -44,12 +44,14 @@ def add_note(event: dict):
 def lambda_handler(event, context):
     """Handles the lambda method invocation"""
     try:
-        note_detail = add_note(event=event)
+        note_detail = add_note(event)
         response = {
             "statusCode": 200,
-            "headers": {"Access-Control-Allow-Origin": "*",
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization"},
+                "Access-Control-Allow-Headers": "Content-Type, Authorization"
+            },
             "body": json.dumps(note_detail)
         }
         return response  # body that is returned

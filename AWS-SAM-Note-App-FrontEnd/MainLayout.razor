@@ -1,5 +1,29 @@
 ﻿@inherits LayoutComponentBase
-<main>
-    @Body
+@inject NoteState NoteState
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+<main id="layout">
+    
+    @* @if (token!=null)
+    {
+        <Sidebar OnAddNote="ShowAddNote"></Sidebar>
+    } *@
+    
+    
+        @Body
+    
 </main>
 
+@code{
+    public string token;
+
+    protected override async Task OnInitializedAsync()
+    {
+        token = await localStorage.GetItemAsStringAsync("id_token");
+    }
+
+    private void ShowAddNote()
+    {
+        NoteState.IsEditing = false;
+        // NewNote = new();
+    }
+}

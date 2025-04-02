@@ -39,7 +39,7 @@ The FrontEnd of the application (User Interface) is built using Blazor WebAssemb
 
 
 # BackEnd
-As stated previously, the backend has been powered by AWS SAM. We make two AWS SAN templates for the backend, so that we can define the resources needed to Create, Save and Update Users for Authorisation Purposes as well as the resources needed so that users can manipulate Notes.
+As stated previously, the backend has been powered by AWS SAM. We make two AWS SAM templates for the backend, so that we can define the resources needed to Create, Save and Update Users for Authorisation Purposes as well as the resources needed so that users can manipulate Notes.
 
 ## Authorisation and Users
 We create a microservice to add and update user accounts. The following steps are required to do this. The template file to perform this can be found here : 
@@ -49,7 +49,9 @@ We create a microservice to add and update user accounts. The following steps ar
 3) We then need to define an API, so that the deployed Lambda Functions can interact with Users.
 4) We then need to create an Amazon Cognito Userpool, 
 
-All of the above services are created under the ``` users ``` directory
+All of the above services are created under the ``` users ``` directory. The required services are declared and made via an AWS SAM template.
+
+
 
 ### DEFINING A TABLE FOR USERS
 
@@ -317,6 +319,17 @@ We, then create the Authoriser Function to secure the API,
 # Connecting AWS BackEnd and Blazor FrontEnd
 
 # Result
+
+# Issues Faced.
+
+When users were logging in and signing up, these were done via Cognito API functions and these users were saved in the UserPool that was defined in the AWS template.
+However, these users were not being saved in the DynamoDB Table, which were being manipulated by the API calls. 
+
+Therefore, the DynamoDB had a standalone list of users, and since user logging in/ registration in FrontEnd was being managed by Cognito API directly and not API calls, Cognito User Pool users and DynamoDB users were seperate.
+
+TLDR: DynamoDB table and UserPool were not linked. API calls manipulated only <b>DynamoDB table</b> but were not in user.
+
+<b>SOLUTION</b> : Make user use API calls instead of cognito API functions and perform DynamoDB manipulation and Cognito user pool manipulation within API call. Both were not being updated with the information and the same time and are in Sync.
 
 
 

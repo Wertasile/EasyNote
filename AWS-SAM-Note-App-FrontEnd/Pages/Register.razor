@@ -1,0 +1,149 @@
+@page "/register"
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+<div class="px-1">
+    <div>
+        <h3>REGISTER</h3>
+    </div>
+    <EditForm Model="registerModel" OnValidSubmit="HandleRegistration">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <InputText type="email" @bind-Value="registerModel.Email" class="form-control" />
+            <span class="text-danger">@emailError</span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <InputText @bind-Value="registerModel.Username" class="form-control" />
+            <span class="text-danger">@usernameError</span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <InputText type="password" @bind-Value="registerModel.Password" class="form-control" />
+            <span class="text-danger">@passwordError</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+
+        <div class="text-danger">@errorMessage</div>
+    </EditForm>
+
+    @if (showConfirmation)
+    {
+        <div class="mt-3">
+            <h4>Email Confirmation</h4>
+            <p>A verification code has been sent to your email. Enter it below to activate your account.</p>
+
+            <InputText @bind-Value="confirmationCode" class="form-control" placeholder="Enter verification code" />
+            <button class="btn btn-success mt-2" @onclick="ConfirmSignUp">Confirm</button>
+            <button class="btn btn-secondary mt-2 ms-2" @onclick="ResendCode">Resend Code</button>
+            <div class="text-danger">@confirmationError</div>
+        </div>
+    }
+</div>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+    private string confirmationCode;
+    private bool showConfirmation = false;
+    private string errorMessage, confirmationError;
+    private string emailError, usernameError, passwordError;
+
+    private class RegisterModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+    }
+
+    private async Task HandleRegistration()
+{
+    emailError = usernameError = passwordError = errorMessage = ""; // clear errors first
+
+    if (string.IsNullOrWhiteSpace(registerModel.Email))
+    {
+        emailError = "Email is required.";
+        return;
+    }
+
+    if (string.IsNullOrWhiteSpace(registerModel.Username))
+    {
+        usernameError = "Username is required.";
+        return;
+    }
+
+    if (string.IsNullOrWhiteSpace(registerModel.Password))
+    {
+        passwordError = "Password is required.";
+        return;
+    }
+
+    try
+    {
+        bool result = await AuthService.RegisterUser(registerModel.Username, registerModel.Password, registerModel.Email);
+        if (result)
+        {
+            showConfirmation = true;
+        }
+        else
+        {
+            errorMessage = "Registration failed. Please check your details and try again.";
+        }
+    }
+    catch (Exception ex)
+    {
+        errorMessage = ex.Message;
+    }
+}
+
+
+    private async Task ConfirmSignUp()
+{
+    confirmationError = ""; // clear error
+
+    if (string.IsNullOrWhiteSpace(registerModel.Username))
+    {
+        confirmationError = "Username is required for confirmation.";
+        return;
+    }
+
+    if (string.IsNullOrWhiteSpace(confirmationCode))
+    {
+        confirmationError = "Confirmation code is required.";
+        return;
+    }
+
+    try
+    {
+        bool isConfirmed = await AuthService.ConfirmSignUpAsync(registerModel.Username, confirmationCode);
+        if (isConfirmed)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            confirmationError = "Failed to confirm. Please try again.";
+        }
+    }
+    catch (Exception ex)
+    {
+        confirmationError = ex.Message;
+    }
+}
+
+
+    private async Task ResendCode()
+    {
+        try
+        {
+            await AuthService.ResendConfirmationCodeAsync(registerModel.Username);
+        }
+        catch (Exception ex)
+        {
+            confirmationError = ex.Message;
+        }
+    }
+}

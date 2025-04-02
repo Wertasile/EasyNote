@@ -1,0 +1,1 @@
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Release\net7.0\publish\web.config

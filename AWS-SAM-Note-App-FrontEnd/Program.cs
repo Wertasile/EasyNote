@@ -73,6 +73,7 @@ builder.Services.AddScoped<NotesService>(sp =>
 
 // Register AuthService
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<NoteState>();
 Console.WriteLine("✅ AuthService Registered!");
 

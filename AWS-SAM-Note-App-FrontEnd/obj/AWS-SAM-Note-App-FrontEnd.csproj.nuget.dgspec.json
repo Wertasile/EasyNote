@@ -88,6 +88,10 @@
               "version": "[8.0.1, )",
               "autoReferenced": true
             },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.7.0, )"
+            },
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"

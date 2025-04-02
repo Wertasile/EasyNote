@@ -7,8 +7,12 @@ import os
 import boto3
 from datetime import datetime
 
-# Prepare DynamoDB client
-USERS_TABLE = os.getenv('USERS_TABLE', None)
+# Initialize AWS Clients
+USER_POOL_ID = os.getenv('COGNITO_USER_POOL_ID')
+CLIENT_ID = os.getenv('COGNITO_CLIENT_ID')
+USERS_TABLE = os.getenv('USERS_TABLE')
+
+cognito = boto3.client('cognito-idp')
 dynamodb = boto3.resource('dynamodb')
 ddbTable = dynamodb.Table(USERS_TABLE)
 
@@ -19,8 +23,9 @@ def lambda_handler(event, context):
     response_body = {'Message': 'Unsupported route'}
     status_code = 400
     headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
         }
 
     try:
@@ -33,7 +38,7 @@ def lambda_handler(event, context):
 
         # CRUD operations for a single User
        
-        # Read a user by ID
+        # Read a user by accessToken
         if route_key == 'GET /users/{userid}':
             # get data from the database
             ddb_response = ddbTable.get_item(
@@ -44,6 +49,8 @@ def lambda_handler(event, context):
                 response_body = ddb_response['Item']
             else:
                 response_body = {}
+
+
             status_code = 200
         
         # Delete a user by ID
@@ -62,11 +69,31 @@ def lambda_handler(event, context):
             # generate unique id if it isn't present in the request
             if 'userid' not in request_json:
                 request_json['userid'] = str(uuid.uuid1())
-            # update the database
-            ddbTable.put_item(
-                Item=request_json
+            name = request_json.get('name')
+            username = request_json.get('username')
+            email = request_json.get('email')
+            password = request_json.get('password')
+            
+            # Step 1: Create Cognito User
+            response = cognito.sign_up(
+                ClientId=CLIENT_ID,
+                Username=username,
+                Password=password,
+                UserAttributes=[{'Name': 'email', 'Value': email},{'Name':'name','Value':name}]
             )
-            response_body = request_json
+
+            user_sub = response['UserSub']  # Cognito user ID (UUID)
+            
+            # Step 2: Store in DynamoDB
+            user_item = {
+                'userid': user_sub,  # Store Cognito User ID as partition key
+                'username': username,
+                'email': email,
+                'created_at': datetime.now().isoformat()
+            }
+            ddbTable.put_item(Item=user_item)
+
+            response_body = {'Message': 'User registered successfully', 'userid': user_sub}
             status_code = 200
 
         # Update a specific user by ID
@@ -81,6 +108,11 @@ def lambda_handler(event, context):
             )
             response_body = request_json
             status_code = 200
+
+        if route_key == 'OPTIONS /users':
+            response_body = request_json
+            status_code = 200
+            
     except Exception as err:
         status_code = 400
         response_body = {'Error:': str(err)}

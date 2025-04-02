@@ -1,13 +1,17 @@
 ﻿@using AWS_SAM_Note_App_FrontEnd.Pages
 @inject NoteState NoteState
+@inject UserService UserService
 @inject NavigationManager Navigation
+@inject NavigationManager Navigation
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
-<div class="d-flex flex-column px-3 bg-dark bg-gradient vh-100 ">
+<div class="border-style d-flex flex-column p-2 gap-3 sidebar">
     <!-- TITLE -->
-    <div class="sidebar-header"><h3>NOTEPAD(3)</h3></div>
+    <div class="sidebar-header"><h3>EZNOTE</h3></div>
     <!-- USER PROFILE -->
     <div class="sidebar-profile"><i class="bi bi-person-circle px-1"></i>@NoteState.username</div>
-    
+    <div @onclick="GetUserId" >GET USERID</div>
+    <div @onclick="SignOut" >LOGOUT</div>
     <!-- MENU ITEMS -->
     <div class="d-flex flex-column sidebar-menu">
         <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-house px-1"></i>Add Note</div>
@@ -23,13 +27,55 @@
 
 @code {
     [Parameter]
-
+    public User CurrentUser { get; set; } = new();
     public EventCallback OnAddNote { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetUserId();
+        await GetUser();
+    }
 
     private async Task OnAddNoteClicked()
     {
         await OnAddNote.InvokeAsync(); // Properly trigger the callback
         Navigation.NavigateTo("/home");
     }
+
+    private async Task SignOut(){
+        await localStorage.RemoveItemAsync("id_token");
+        await localStorage.RemoveItemAsync("access_token");
+        await localStorage.RemoveItemAsync("tokens");
+        Navigation.NavigateTo("/");
+    }
+
+    private async Task GetUserId()
+    {
+        var userId = await UserService.GetUserIdAsync();
+        if (!string.IsNullOrEmpty(userId) && userId != "Error" && userId != "Token missing")
+        {
+            await localStorage.SetItemAsync("user_id", userId);
+            Console.WriteLine($"✅ User ID stored: {userId}");
+        }
+        else
+        {
+            Console.WriteLine("❌ Failed to get User ID");
+        }
+    }
+
+    private async Task GetUser(){
+        var user = await UserService.GetUserDetailsAsync();
+        CurrentUser.Username = user.Username;
+        Console.WriteLine(user.Username);
+    }
+
+    private async Task DeleteUser(){
+        
+    }
+
+    private async Task UpdateUser(){
+        
+    }
+
 
 }
