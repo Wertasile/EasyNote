@@ -5,20 +5,6 @@ The site can be visited here: http://awssamnoteapp.s3-website-us-east-1.amazonaw
 
 <i> Update: At its current stage, the backend infrastrucutre is fully deployed however the frontend is still in development. </i>
 
-Potential Upcoming features:
-- Calendar and Event Integration.
-- Text-to-Speech
-- Embedding and saving voice memos.
-- Embedding Images and other Files.
-- Scratch pad, to draw and scribble.
-- Customise notes i.e, colours, fonts, sizing, etc.
-- Sharing Notes
-
-Current Features:
-- Users can create, read, update and delete notes.
-- Users can login/ register to save notes.
-- Notes can be categorised.
-
 # Introduction
 The main objective of this project, was to make use of AWS SAM (Serverless Application Model) to build and deploy serverless applications. 
 
@@ -331,5 +317,20 @@ TLDR: DynamoDB table and UserPool were not linked. API calls manipulated only <b
 
 <b>SOLUTION</b> : Make user use API calls instead of cognito API functions and perform DynamoDB manipulation and Cognito user pool manipulation within API call. Both were not being updated with the information and the same time and are in Sync.
 
+# Others
+
+Potential Upcoming features:
+- Calendar and Event Integration.
+- Text-to-Speech
+- Embedding and saving voice memos.
+- Embedding Images and other Files.
+- Scratch pad, to draw and scribble.
+- Customise notes i.e, colours, fonts, sizing, etc.
+- Sharing Notes
+
+Current Features:
+- Users can create, read, update and delete notes.
+- Users can login/ register to save notes.
+- Notes can be categorised.
 
 
