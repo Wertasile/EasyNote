@@ -43,6 +43,18 @@ Therefore, this ensures that only authorised users who are part of the userpool 
 
 # FrontEnd
 
+## AUTHORISATION - LOGIN AND REGISTRATION PAGES
+
+For registering new users and logging in, we have 2 seperate pages. The pages have forms, whose inputs perform asynchronous tasks for logging in and registering.
+The Amazon CognitoIdenityProviderClient class, provides us with the necessary methods to manipulate a userpool and verify user details. This is declared and used in a Seperate Service called `AuthService`. 
+Cognito has also been setup such that email verifications are necessary to create accounts, adding another Layer of Security.
+
+FLOWCHART
+
+## NOTES PAGE
+
+In the Home Page, We can Interact with the API for Notes by making asynchronous called to the NotesService, which perform HTTP called to our Notes API. We can Create Notes, Edit Notes, Delete Notes and View all Notes.
+
 
 # Issues Faced.
 

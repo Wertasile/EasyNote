@@ -414,8 +414,6 @@ D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\wwwroot\_framework\System.ComponentModel.EventBasedAsync.dll.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Options.dll.gz
-D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\publish\web.config
-D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\publish\wwwroot\_framework\blazor.boot.json
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\AWS-SAM-Note-App-FrontEnd.staticwebassets.runtime.json
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\AWS-SAM-Note-App-FrontEnd.dll
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\AWS-SAM-Note-App-FrontEnd.pdb
@@ -885,3 +883,6 @@ D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\em1oshayoo.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\v4ysfa931c.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\qfbazclyuz.gz
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\web.config
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\wwwroot\lib\bootstrap-icons.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\wwwroot\_framework\blazor.boot.json

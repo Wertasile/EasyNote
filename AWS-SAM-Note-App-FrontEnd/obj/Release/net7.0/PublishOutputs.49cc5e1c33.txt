@@ -1,0 +1,4 @@
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\Release\output\web.config
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\Release\output\wwwroot\lib\bootstrap-icons.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\Release\output\wwwroot\_framework\blazor.boot.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\Release\web.config

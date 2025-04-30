@@ -1,0 +1,1 @@
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\output\web.config

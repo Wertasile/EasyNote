@@ -26,12 +26,12 @@
                         <div>LOADING</div>
                     }
                     else{
-                        <div class="d-flex flex-column notes gap-1">
+                        <div class="d-flex flex-column notes gap-3">
                         
                         @foreach (var note in Notes)
                         {
-                            <div class="d-flex flex-row justify-content-between sidebar-item px-1">
-                                <div @onclick="() => EditNote(note)">@note.NoteTitle</div>
+                            <div @onclick="() => EditNote(note)" class="d-flex flex-row justify-content-between notebar-item">
+                                <div>@note.NoteTitle</div>
                                 <div @onclick="() => DeleteNoteAsync(note.NoteId)"><i class="bi bi-trash3"></i></div>
                             </div>
                         }        

@@ -7,21 +7,18 @@
 
 <div class="border-style d-flex flex-column p-2 gap-3 sidebar">
     <!-- TITLE -->
-    <div class="sidebar-header"><h3>EZNOTE</h3></div>
+    <div><img src="../Images/EasyNote_Logo.png" alt="EASYNOTE Logo"/><h2>EZNOTE</h2></div>
     <!-- USER PROFILE -->
-    <div class="sidebar-profile"><i class="bi bi-person-circle px-1"></i>@NoteState.username</div>
-    <div @onclick="GetUserId" >GET USERID</div>
-    <div @onclick="SignOut" >LOGOUT</div>
-    <!-- MENU ITEMS -->
-    <div class="d-flex flex-column sidebar-menu">
-        <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-house px-1"></i>Add Note</div>
-        <div class="sidebar-item"><i class="bi bi-house px-1"></i>Home</div>
-        <div class="sidebar-item"><i class="bi bi-sticky px-1"></i>Notes</div>
-        <div class="sidebar-item"><i class="bi bi-bookmark px-1"></i>Shortcuts</div>
-        <div class="sidebar-item"><i class="bi bi-calendar-event px-1"></i>Calendar</div>
-        <div class="sidebar-item"><i class="bi bi-tag px-1"></i>Categories</div>
-        <div class="sidebar-item"><i class="bi bi-share px-1"></i>Shared</div>
-    </div>
+    <div><i class="bi bi-person-circle px-1"></i>@NoteState.username</div>
+    <div @onclick="SignOut" >LOGOUT</div> 
+    <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-plus px-1"></i>ADD NOTE</div>
+    <div class="sidebar-item"><i class="bi bi-house px-1"></i>HOME</div>
+    <div class="sidebar-item"><i class="bi bi-sticky px-1"></i>NOTES</div>
+    <div class="sidebar-item"><i class="bi bi-bookmark px-1"></i>SHORTCUTS</div>
+    <div class="sidebar-item"><i class="bi bi-calendar-event px-1"></i>CALENDAR</div>
+    <div class="sidebar-item"><i class="bi bi-tag px-1"></i>CATEGORIES</div>
+    <div class="sidebar-item"><i class="bi bi-share px-1"></i>SHARED</div>
+    
     
 </div>
 

@@ -41,7 +41,7 @@ Resources:
         AllowHeaders: "'Content-Type,Authorization'"
         AllowOrigin: "'*'"
       Auth:
-        DefaultAuthorizer: Module3CognitoAuthorizer
+        DefaultAuthorizer: Module3Cognitosam deAuthorizer
         Authorizers:
           Module3CognitoAuthorizer: # Sets Cognito user pool as default authorizer for API requests
             UserPoolArn: !Sub "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${UserPool}"

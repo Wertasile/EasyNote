@@ -1,0 +1,9 @@
+[build]
+  base    = "AWS-SAM-Note-App-FrontEnd"
+  publish = "build/wwwroot"
+  command = "dotnet publish -c Release -o build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
