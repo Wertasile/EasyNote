@@ -1,7 +1,7 @@
 # EasyNote
 Serverless Note Taking Application built using Blazor WebAssembly (FrontEnd) and AWS SAM template (BackEnd). User can Login/Register and can perform CRUD operations with notes. Notes can also be categorised.
 
-The site can be visited here: http://awssamnoteapp.s3-website-us-east-1.amazonaws.com 
+The site can be visited here: https://eznoteapp.netlify.app/ 
 
 <i> Update: At its current stage, the backend infrastrucutre is fully deployed however the frontend is still in development. </i>
 
