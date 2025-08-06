@@ -28,7 +28,7 @@ public class AuthService
         var payload = new
         {
             name = username,
-            username = username,
+            username = email,
             password = password,
             email = email
         };
