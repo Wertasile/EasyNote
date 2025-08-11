@@ -108,7 +108,7 @@ public class AuthService
         Console.WriteLine(authResponse.AuthenticationResult.IdToken.ToString());
         var id_token = authResponse.AuthenticationResult.IdToken.ToString();
         var access_token = authResponse.AuthenticationResult.AccessToken.ToString();
-        
+
 
         var tokens = new Dictionary<string, string>{
             {"id_token",id_token},

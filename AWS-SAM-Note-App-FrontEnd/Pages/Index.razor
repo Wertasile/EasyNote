@@ -4,37 +4,40 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject NoteState NoteState
 
-<div class="px-1">
-    <div>
+<div class="px-1 d-flex w-100 h-100 justify-content-center">
+    <div class="login">
         <h3>LOGIN</h3>
-    </div>
-    <div class="mw-500px">
-        <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+        
+        <div class="mw-500px ">
+            <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
 
-            <div class="mb-3">
-                <InputText @bind-Value="loginModel.Username" class="form-control" placeholder="Email Address" />
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
+                <div class="mb-3">
+                    <InputText @bind-Value="loginModel.Username" class="form-control" placeholder="Email Address" />
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
 
-            <div class="mb-3">
-                <InputText @bind-Value="loginModel.Password" class="form-control" placeholder="Password" type="Password" />
-            </div>
+                <div class="mb-3">
+                    <InputText @bind-Value="loginModel.Password" class="form-control" placeholder="Password" type="Password" />
+                </div>
 
-            <div class="form-text">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                special characters, or emoji.
-            </div>
+                <div class="form-text">
+                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                    special characters, or emoji.
+                </div>
 
-            <button type="submit" class="btn btn-primary">LOGIN</button>
+                <button type="submit" class="btn btn-primary">LOGIN</button>
 
-        </EditForm>
-    </div>
-    <div>
-        <a href="/register">Click here to make a new account!</a>
+            </EditForm>
+        </div>
+        <div>
+            <a href="/register">Click here to make a new account!</a>
+        </div>
     </div>
 </div>
+    
+
 
 
 

@@ -1,7 +1,7 @@
 {
   "entryAssembly": "AWS-SAM-Note-App-FrontEnd",
   "resources": {
-    "hash": "sha256-aSeo5UlycIrn3zgto6bRNEvUCbmxHQ9H6htOYHVUuqU=",
+    "hash": "sha256-JZYVl/eq74IBe59PNyIn+tUCLzcJsM0lPk/v+egE0nY=",
     "runtime": {
       "dotnet.7.0.20.bl5pfofb6c.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -18,6 +18,7 @@
       "AWSSDK.DynamoDBv2.dll": "sha256-p9UKGMKNCCEKp39nua9i6bg5ozO0TH6Orcbt0EAQkeQ=",
       "AWSSDK.SecurityToken.dll": "sha256-UH2oTWhTJy1EO203dzkA/J1HrFoxNQvaNeYcIrCWMbA=",
       "Blazored.LocalStorage.dll": "sha256-xcO4wZtFwM5I9DIZf1sZpOdcsaTjw1HyqJ5AWciMDAk=",
+      "Blazored.TextEditor.dll": "sha256-QHF5/3haloS0WDKFP0vEhJOJ8D2s+Q+P3jDC97uUI2c=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-slDjDcX+jWHK37C+TcMSiNdKjR4Lf+sFS2PdJocVk6U=",
       "Microsoft.AspNetCore.Components.dll": "sha256-SVqESV3aJFKOkvmnDOFkvktvfEc45ZUYwu8bUNegy1k=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-HHOtjws+9ItTGHLVlWO5wEcobrA+Qyj85eko5TVrHEE=",
@@ -217,10 +218,10 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-eUS0LjZHjruRrAfkEhu8airha/7sqCH1F9Bzjijfnb4="
+      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-1f9AHf4aq7yTTwVJdMfaR2G33xXKdVIsMIjgaqZbxvs="
     },
     "pdb": {
-      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-eeDXtjO4kL5xiGfZUAdDp1QsP193cRn4kNzQ5Fud8Ng="
+      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-WKzg/4A/FrHWu5qa1V0G5WyCxLTT+thFY+Q2x/dVopc="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

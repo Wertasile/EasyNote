@@ -1,7 +1,7 @@
 {
   "entryAssembly": "AWS-SAM-Note-App-FrontEnd",
   "resources": {
-    "hash": "sha256-HaWUmvDlYPnLzfMZ2jXUbHxd1DJovNnBWAOyfPFyVoA=",
+    "hash": "sha256-HHMf8GN5iwSOimge0Hn9qIEuo8Vsk3B2RA6YZ4YZHO8=",
     "runtime": {
       "dotnet.7.0.20.bl5pfofb6c.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -12,7 +12,7 @@
     },
     "assembly": {
       "Amazon.Extensions.CognitoAuthentication.dll": "sha256-M2Wl8/RYPf2Wx8Np5TPsWDFngldvbIn1MJB1BgEHMzw=",
-      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-giVy2aUFy0N/RfRy1nA9weC0hGlYkZ36G/Ds9AhTFmA=",
+      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-hLelVAIExHgSO5H3GPIDTUMO5rIzw7LUNf3D/7Cg0Dc=",
       "AWSSDK.CognitoIdentity.dll": "sha256-ZiMkGLw1WdBSBKzPk9mrg8NwqOWXLiEE7Pp357OldPM=",
       "AWSSDK.CognitoIdentityProvider.dll": "sha256-yfzMZxvDcFso8SxMk0HJUGCyS2hSBrTqkqR85Uv3W+g=",
       "AWSSDK.Core.dll": "sha256-5SiOIxV/PDOSWmFAzivS4YcfH4IzZLMzaTmCFjKRbQA=",

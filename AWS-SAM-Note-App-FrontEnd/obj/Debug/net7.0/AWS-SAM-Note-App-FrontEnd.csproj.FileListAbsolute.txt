@@ -883,6 +883,10 @@ D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\em1oshayoo.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\v4ysfa931c.gz
 D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\qfbazclyuz.gz
-D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\web.config
-D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\wwwroot\lib\bootstrap-icons.json
-D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\output\wwwroot\_framework\blazor.boot.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\build\web.config
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\build\wwwroot\lib\bootstrap-icons.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\build\wwwroot\_framework\blazor.boot.json
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\wwwroot\_framework\Blazored.TextEditor.dll
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\wwwroot\_framework\Blazored.TextEditor.dll.gz
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\bin\Debug\net7.0\Blazored.TextEditor.dll
+D:\AWS-SAM-Note-App\AWS-SAM-Note-App\AWS-SAM-Note-App-FrontEnd\obj\Debug\net7.0\compressed\1oel3s0nea.gz

@@ -7,10 +7,11 @@
 
 <div class="border-style d-flex flex-column p-2 gap-3 sidebar">
     <!-- TITLE -->
-    <div><img src="../Images/EasyNote_Logo.png" alt="EASYNOTE Logo"/><h2>EZNOTE</h2></div>
+    <div><h2>EASYNOTE</h2></div>
     <!-- USER PROFILE -->
-    <div><i class="bi bi-person-circle px-1"></i>@NoteState.username</div>
-    <div @onclick="SignOut" >LOGOUT</div> 
+    <div><i class="bi bi-person-circle px-1"></i>@CurrentUser.Username</div>
+
+    <div class="sidebar-item" @onclick="SignOut"><i class="bi bi-box-arrow-right px-1"></i>LOGOUT</div> 
     <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-plus px-1"></i>ADD NOTE</div>
     <div class="sidebar-item"><i class="bi bi-house px-1"></i>HOME</div>
     <div class="sidebar-item"><i class="bi bi-sticky px-1"></i>NOTES</div>
@@ -18,8 +19,7 @@
     <div class="sidebar-item"><i class="bi bi-calendar-event px-1"></i>CALENDAR</div>
     <div class="sidebar-item"><i class="bi bi-tag px-1"></i>CATEGORIES</div>
     <div class="sidebar-item"><i class="bi bi-share px-1"></i>SHARED</div>
-    
-    
+      
 </div>
 
 @code {
