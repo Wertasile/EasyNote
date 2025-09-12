@@ -22,6 +22,7 @@
 
 #app {
     min-height:100vh;
+    
     color: var(--text);
     overflow-y:hidden;
     /* background: linear-gradient(180deg, #241b2c 50%, #1a262c 100%); */

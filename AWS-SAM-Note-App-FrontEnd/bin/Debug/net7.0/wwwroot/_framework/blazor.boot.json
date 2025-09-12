@@ -1,7 +1,7 @@
 {
   "entryAssembly": "AWS-SAM-Note-App-FrontEnd",
   "resources": {
-    "hash": "sha256-JZYVl/eq74IBe59PNyIn+tUCLzcJsM0lPk/v+egE0nY=",
+    "hash": "sha256-riQ5IHbV+qhN6bEZbo9qseJSpkd3hpTN4mDkMXe1AmE=",
     "runtime": {
       "dotnet.7.0.20.bl5pfofb6c.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -218,10 +218,10 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-1f9AHf4aq7yTTwVJdMfaR2G33xXKdVIsMIjgaqZbxvs="
+      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-xI7VmEEOwv6BVkas4WGPR0nFmPQiRaRRjMNa93c6aEI="
     },
     "pdb": {
-      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-WKzg/4A/FrHWu5qa1V0G5WyCxLTT+thFY+Q2x/dVopc="
+      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-VKEWqRjAbMe7d8KLv3df/ppZMU6n6l+1OVay2slNYX8="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

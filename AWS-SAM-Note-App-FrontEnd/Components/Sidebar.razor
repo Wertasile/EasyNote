@@ -25,6 +25,8 @@
 @code {
     [Parameter]
     public User CurrentUser { get; set; } = new();
+    
+    [Parameter]
     public EventCallback OnAddNote { get; set; }
 
     protected override async Task OnInitializedAsync()
