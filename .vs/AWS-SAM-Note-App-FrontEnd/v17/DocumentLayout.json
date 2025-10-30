@@ -1,0 +1,185 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\components\\sidebar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\components\\sidebar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\services\\notestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\services\\notestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|d:\\aws-sam-note-app\\aws-sam-note-app\\aws-sam-note-app-frontend\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9A975689-48B9-4F80-ADBE-309E849A8A66}|AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj|solutionrelative:aws-sam-note-app-frontend\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app.css",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\app.css",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\wwwroot\\css\\app.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-26T23:56:46.462Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.razor",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Pages\\Index.razor",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Index.razor",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Pages\\Index.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T21:31:03.678Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Register.razor",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Register.razor",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Pages\\Register.razor",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Register.razor",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Pages\\Register.razor",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEYAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T22:58:01.148Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Services\\AuthService.cs",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Services\\AuthService.cs",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Services\\AuthService.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAIwHIAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:31:57.509Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\MainLayout.razor",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\MainLayout.razor",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\MainLayout.razor",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T21:40:28.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NoteState.cs",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Services\\NoteState.cs",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Services\\NoteState.cs",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Services\\NoteState.cs",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Services\\NoteState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:30:43.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sidebar.razor",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Components\\Sidebar.razor",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Components\\Sidebar.razor",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Components\\Sidebar.razor",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Components\\Sidebar.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T21:30:34.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "AWS-SAM-Note-App-FrontEnd\\Pages\\Home.razor",
+              "ToolTip": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\Pages\\Home.razor",
+              "RelativeToolTip": "AWS-SAM-Note-App-FrontEnd\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T21:29:11.404Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

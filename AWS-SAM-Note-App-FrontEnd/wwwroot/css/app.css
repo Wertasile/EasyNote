@@ -1,9 +1,12 @@
 :root {
-    --text: #929399;
-    --background: #000000;
-    --primary: #1ABCFE;
-    --secondary: #FF7262;
-    --accent: #29324f;
+    --text: #cfd3dc;
+    --text-muted: #a5adbb;
+    --background: #0b0f14;
+    --background-2: #0f1520;
+    --primary: #22c3ee;      /* poppy cyan */
+    --primary-strong: #10a6d1;
+    --secondary: #ff7a7a;    /* warm coral */
+    --accent: #1b2435;       /* slate for cards */
 }
 
 * {
@@ -25,8 +28,10 @@
     
     color: var(--text);
     overflow-y:hidden;
-    /* background: linear-gradient(180deg, #241b2c 50%, #1a262c 100%); */
-    background: var(--background);
+    background:
+      radial-gradient(1200px 500px at 10% -10%, rgba(34,195,238,0.12), rgba(0,0,0,0)),
+      radial-gradient(900px 500px at 110% 20%, rgba(255,122,122,0.10), rgba(0,0,0,0)),
+      linear-gradient(180deg, var(--background) 0%, var(--background-2) 100%);
     z-index: 2;
     width: 100%;
     height: 100%;
@@ -50,9 +55,15 @@ a, .btn-link {
 }
 
 .btn-primary {
-    color: #fff;
+    color: #0b0f14;
     background-color: var(--primary);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 14px rgba(34,195,238,0.25);
 }
+.btn-primary:hover { background-color: var(--primary-strong); color: #0b0f14; }
+.btn-secondary { color: #fff; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); }
+.btn-outline-light { color: #e7ecf3; border-color: rgba(255,255,255,0.28); }
+.btn { transition: background-color 120ms ease, box-shadow 160ms ease, color 120ms ease; }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -71,17 +82,14 @@ a, .btn-link {
 }
 
 
-.login{
-    width: 500px;
-    margin: 100px auto;
-    padding: 10px;
-}
+/* Legacy login block retained for compatibility */
+.login{ width: 500px; margin: 100px auto; padding: 10px; }
 
 /* -------------------------------------------CSS FOR THE APP ---------------------------------------------------- */
 #layout {
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 5px;
 }
 
@@ -91,21 +99,26 @@ a, .btn-link {
     border-radius:3px;
     margin: 5px;
     border-right: solid 0.5px rgba(255, 255, 255, 0.11);
-    width: 15vw;
+    width: 220px;
     gap: 5px;
-    background-color: rgb(22, 22, 22);
+    background-color: rgba(255,255,255,0.03);
+    transition: width 160ms ease;
 }
+.sidebar.collapsed { width: 64px; }
 
-.sidebar-item{
-    cursor:pointer;
-    padding:5px;
-}
-
-.sidebar-item:hover{
-    background-color:rgba(255, 255, 255, 0.11);
-    border-radius: 5px;
-
-}
+.sidebar-header { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 16px rgba(26,188,254,.6); }
+.sidebar-user { padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.06); }
+.sidebar-nav { padding: 6px; }
+.sidebar-item{ cursor:pointer; padding:8px 10px; display:flex; align-items:center; gap:8px; width:100%; background: transparent; color: inherit; border: none; text-align: left; border-radius: 6px; transition: background-color 120ms ease, transform 60ms ease; }
+.sidebar-item:hover{ background-color:rgba(255, 255, 255, 0.08); }
+.sidebar-item:active{ transform: translateY(1px); }
+.sidebar-item.active{ background: rgba(26,188,254,0.15); border: 1px solid rgba(26,188,254,0.35); }
+.sidebar-item.danger{ color: #ffb3b3; }
+.sidebar .label { display: inline; }
+.sidebar.collapsed .label { display: none; }
+.sidebar.collapsed .sidebar-item { justify-content: center; }
 
 
 /* ----------------------------------------------------- NOTES SECTION -------------------------------------------------------------------- */
@@ -113,19 +126,34 @@ a, .btn-link {
 .content{
     display:flex;
     border-radius: 10px;
-    width: 85vw;
-    
+    width: auto;
+    flex: 1;
+    gap: 10px;
 }
 
 
 /* ----------------------------------------------------- NOTES SECTION 1 - NOTEBAR -------------------------------------------------------------------- */
 
 .notebar{
-    width: 20vw;
+    width: 28%;
     resize: horizontal;
     border-right: solid 0.5px rgba(255, 255, 255, 0.2);
     gap: 10px;
 }
+
+.filter-row .form-select {
+    min-width: 140px;
+}
+
+/* Search bar */
+.searchbar { row-gap: 8px; }
+.search-input { min-width: 240px; }
+.search-input .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.6; }
+.search-input .form-control { padding-left: 34px; }
+.search-input .clear-btn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); padding: 2px 6px; }
+
+/* Filters popover */
+.filters-popover { position: fixed; width: 280px; background: rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.45); padding: 12px; z-index: 20; backdrop-filter: blur(6px); }
 
 .notebar-item{
     height: 100px;
@@ -138,7 +166,7 @@ a, .btn-link {
 /* ----------------------------------------------------- NOTES SECTION 2 - NOTEPAGE -------------------------------------------------------------------- */
 
 .notepage{
-    width: 65vw;
+    flex: 1;
 }
 
 .input-decor {
@@ -169,4 +197,254 @@ textarea:focus{
 
 
 /* -------------------------------------------CSS FOR THE MAIN BODY ---------------------------------------------------- */
+
+/* -------------------------------------------New UI elements ---------------------------------------------------- */
+
+.note-card {
+    background-color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.note-card:hover {
+    background-color: rgba(27, 36, 53, 0.95);
+    border-color: rgba(255, 255, 255, 0.20);
+    transform: translateY(-1px);
+}
+
+.note-card-title {
+    color: #fff;
+    font-weight: 600;
+}
+
+.note-card-meta {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.header-actions .btn {
+    min-width: 120px;
+}
+
+.empty-state {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    animation: shimmer 1.4s infinite;
+}
+
+.skeleton-card { height: 64px; }
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+/* -------------------------------------------Auth visuals ---------------------------------------------------- */
+.auth { position: relative; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.auth-card { width: 100%; max-width: 480px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.10); border-radius: 12px; padding: 20px; backdrop-filter: blur(6px); }
+.auth-brand { display:flex; gap:12px; align-items:center; margin-bottom: 10px; }
+.auth-logo { width: 36px; height: 36px; border-radius: 8px; }
+.input-elevated { background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.14); color: #fff; }
+.input-elevated:focus { background: rgba(255,255,255,0.06); }
+.auth-art { position: absolute; inset: 0; overflow: hidden; z-index: -1; }
+.orb { position: absolute; width: 340px; height: 340px; border-radius: 50%; filter: blur(60px); opacity: 0.35; }
+.orb-1 { background: #1ABCFE; top: -60px; left: -40px; }
+.orb-2 { background: #FF7262; bottom: -80px; right: -40px; }
+.orb-3 { background: #a66bff; bottom: 40%; left: 50%; transform: translateX(-50%); }
+.confirm-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+
+/* -------------------------------------------Editor integration ---------------------------------------------------- */
+.editor-surface { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; }
+.note-meta { padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,0.06); }
+.editor-rich .ql-toolbar { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.12); border-top-left-radius: 8px; border-top-right-radius: 8px; }
+.editor-rich .ql-container { background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.12); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; color: #fff; min-height: 360px; }
+
+/* -------------------------------------------Calendar component ---------------------------------------------------- */
+.calendar-page {
+    display: flex;
+    width: 85vw;
+    padding: 20px;
+    gap: 20px;
+}
+
+.calendar-container {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    padding: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: all 120ms ease;
+    position: relative;
+    min-height: 80px;
+}
+
+.calendar-day:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+.calendar-day.other-month {
+    opacity: 0.4;
+}
+
+.calendar-day.today {
+    background: rgba(34,195,238,0.18);
+    border-color: rgba(34,195,238,0.45);
+    box-shadow: 0 0 0 2px rgba(34,195,238,0.14);
+}
+
+.calendar-day.today .calendar-day-number {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.calendar-day-number {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.calendar-day-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin-top: auto;
+    box-shadow: 0 0 8px rgba(26,188,254,0.6);
+}
+
+.calendar-events {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.calendar-events h4 {
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.event-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    transition: background-color 120ms ease;
+}
+
+.event-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.event-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(26,188,254,0.2);
+    display: grid;
+    place-items: center;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.event-content {
+    flex: 1;
+}
+
+.event-title {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.event-time {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+}
+
+.no-events {
+    text-align: center;
+    padding: 24px;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+}
+
+/* Calendar popover */
+.calendar-popover { position: fixed; width: 320px; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); backdrop-filter: blur(6px); }
+.calendar-popover .popover-header { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.calendar-popover .popover-content { padding: 10px; max-height: 320px; overflow: auto; }
 

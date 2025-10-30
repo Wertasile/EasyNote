@@ -8,12 +8,11 @@ using AWS_SAM_Note_App_FrontEnd;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
-Console.WriteLine("🚀 Blazor App Starting...");
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-//Console.WriteLine("🔧 Configuring Services...");
+//Console.WriteLine("Configuring Services...");
 
 // 1. ---- Register Local Storage ---------
 builder.Services.AddBlazoredLocalStorage();
@@ -22,7 +21,7 @@ Console.WriteLine("✅ BlazoredLocalStorage Registered!");
 // 2. ---- Register HTTP Client ----
 builder.Services.AddScoped<HttpClient>(sp =>
 {
-    Console.WriteLine("🔧 Registering HttpClient...");
+    Console.WriteLine("Registering HttpClient...");
 
     var client = new HttpClient { BaseAddress = new Uri("https://6yfkr7gn38.execute-api.us-east-1.amazonaws.com/Prod/") };
 
@@ -36,19 +35,19 @@ builder.Services.AddScoped<HttpClient>(sp =>
             if (!string.IsNullOrEmpty(token))
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                Console.WriteLine($"✅ Token Added to HttpClient Headers: {token}");
+                Console.WriteLine($"Token Added to HttpClient Headers: {token}");
             }
             else
             {
-                Console.WriteLine("⚠️ No Token Found - HttpClient will not have Authorization header.");
+                Console.WriteLine("No Token Found - HttpClient will not have Authorization header.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ Error retrieving token: {ex.Message}");
+            Console.WriteLine($"Error retrieving token: {ex.Message}");
         }
     });
-    Console.WriteLine("✅ HttpClient Registered!");
+    Console.WriteLine("HttpClient Registered!");
     return client;
 });
 
@@ -56,7 +55,7 @@ builder.Services.AddScoped<HttpClient>(sp =>
 // Register NotesService
 builder.Services.AddScoped<NotesService>(sp =>
 {
-    Console.WriteLine("🔧 Registering NotesService...");
+    Console.WriteLine("Registering NotesService...");
     try
     {
         var localStorage = sp.GetRequiredService<ILocalStorageService>();
@@ -66,7 +65,7 @@ builder.Services.AddScoped<NotesService>(sp =>
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"❌ Error registering NotesService: {ex.Message}");
+        Console.WriteLine($"Error registering NotesService: {ex.Message}");
         throw;
     }
 });
@@ -77,6 +76,6 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<NoteState>();
 Console.WriteLine("✅ AuthService Registered!");
 
-Console.WriteLine("🚀 Starting Application...");
+Console.WriteLine("Starting Application...");
 await builder.Build().RunAsync();
 Console.WriteLine("✅ Application started!");

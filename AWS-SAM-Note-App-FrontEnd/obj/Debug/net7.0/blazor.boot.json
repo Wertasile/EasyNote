@@ -1,15 +1,16 @@
 {
   "entryAssembly": "AWS-SAM-Note-App-FrontEnd",
   "resources": {
-    "hash": "sha256-riQ5IHbV+qhN6bEZbo9qseJSpkd3hpTN4mDkMXe1AmE=",
+    "hash": "sha256-GVOrV5bE5GxWpaw960fGJ+CKt1uCY9rHAvF6qyZai+o=",
     "runtime": {
-      "dotnet.7.0.20.bl5pfofb6c.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
+      "dotnet.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
       "dotnet.wasm": "sha256-2P6rVlE+GN7v/KBZsI/zwouhfpV38+1lEl5FMslgb4A=",
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
       "icudt_EFIGS.dat": "sha256-8fItetYY8kQ0ww6oxwTLiT3oXlBwHKumbeP2pRF4yTc=",
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
+    "coreAssembly": {},
     "assembly": {
       "Amazon.Extensions.CognitoAuthentication.dll": "sha256-M2Wl8/RYPf2Wx8Np5TPsWDFngldvbIn1MJB1BgEHMzw=",
       "AWSSDK.CognitoIdentity.dll": "sha256-ZiMkGLw1WdBSBKzPk9mrg8NwqOWXLiEE7Pp357OldPM=",
@@ -218,14 +219,14 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-xI7VmEEOwv6BVkas4WGPR0nFmPQiRaRRjMNa93c6aEI="
+      "AWS-SAM-Note-App-FrontEnd.dll": "sha256-HmnreyzyRH+YgK+DJUxSKi5DTwkaWH3pdDl3Q9vwEtw="
     },
     "pdb": {
-      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-VKEWqRjAbMe7d8KLv3df/ppZMU6n6l+1OVay2slNYX8="
+      "AWS-SAM-Note-App-FrontEnd.pdb": "sha256-thHjNi2pfpgTcZolOd309A0pk3EgVdsotmnKrJh2/O4="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
-        "hash": "sha256-2P6rVlE+GN7v/KBZsI/zwouhfpV38+1lEl5FMslgb4A=",
+        "hash": "sha256-",
         "behavior": "dotnetwasm"
       }
     }

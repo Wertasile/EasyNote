@@ -1,208 +1,70 @@
 @page "/home"
-@inject NotesService NotesService
-@inject NoteState NoteState
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+<Sidebar></Sidebar>
 
-<Sidebar OnAddNote="HandleAddNote"></Sidebar>
-
-<div class="content">
-
-    <!-- NOTEBAR -->
-    <div class="notebar p-2 d-flex flex-column gap-3">
-        <h3><b>NOTES</b> <span class="opacity-50 fs-5">@FilteredNotes.Count()</span></h3>
-
-        <div class="d-flex flex-row gap-2 mb-2">
-            <InputText class="form-control" 
-                    placeholder="Search notes..." 
-                    @bind-Value="searchTerm" 
-                    @oninput="OnSearchChanged" />
-
-            <select class="w-[20px]" @bind="selectedFilter">
-                <option value="">All</option>
-                <option value="today">Today</option>
-                <option value="week">This Week</option>
-                <option value="month">This Month</option>
-            </select>
+<div class="content p-3 d-flex flex-column gap-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h3 class="m-0">Welcome to EasyNote</h3>
+            <div class="opacity-75">Quick actions and a snapshot of your notes.</div>
         </div>
-
-        @if (FilteredNotes == null || !FilteredNotes.Any())
-        {
-            <div>No notes created yet.</div>
-        }
-        else
-        {
-            <div class="d-flex flex-column notes gap-3">
-                @foreach (var note in FilteredNotes)
-                {
-                    <div class="d-flex flex-column border border-primary p-2 bg-primary bg-gradient text-dark">
-                        <div @onclick="() => EditNote(note)" class="d-flex flex-row justify-content-between">
-                            <div>@((MarkupString)note.NoteTitle)</div>
-                            <div @onclick="() => DeleteNoteAsync(note.NoteId)" @onclick:stopPropagation>
-                                <i class="bi bi-trash3"></i>
-                            </div>
-                        </div>
-                        <div><i>@TryFormatNoteTime(note.NoteTime)</i></div>
-                    </div>
-                }
-            </div>
-        }
+        <div class="d-flex gap-2">
+            <a class="btn btn-primary" href="/notes"><i class="bi bi-plus me-1"></i>New Note</a>
+            <a class="btn btn-secondary" href="/calendar"><i class="bi bi-calendar-event me-1"></i>Open Calendar</a>
+        </div>
     </div>
 
-    <!-- NOTE EDITOR -->
-    <div class="notepage d-flex flex-column p-2 border-style gap-2">
-        <div class="d-flex flex-row justify-content-between">
-            <div><h3>@(NoteState.IsEditing ? "EDIT NOTE" : "ADD NOTE")</h3></div>
-            <button class="btn btn-primary" @onclick="SaveNoteAsync">@(NoteState.IsEditing ? "Save Changes" : "Add Note")</button>
+    <div class="d-flex flex-wrap gap-3">
+        <div class="dashboard-card">
+            <div class="card-title">Recent Notes</div>
+            <div class="card-body d-flex flex-column gap-2">
+                @if (recentNotes == null || recentNotes.Count == 0)
+                {
+                    <div class="opacity-75">No recent notes.</div>
+                }
+                else
+                {
+                    @foreach (var n in recentNotes)
+                    {
+                        <a class="link-light text-decoration-none d-flex justify-content-between align-items-center dashboard-item"
+                            href="/notes?noteId=@n.NoteId">
+                            <span class="text-truncate">@((MarkupString)n.NoteTitle)</span>
+                            <span class="small opacity-75">@FormatShort(n.NoteTime)</span>
+                        </a>
+                    }
+                }
+            </div>
         </div>
 
-        <div class="h-75">
-            <InputText class="input-decor" @bind-Value="NewNote.NoteTitle" aria-placeholder="Enter Title"/>
-            <BlazoredTextEditor @ref="@richEditor">
-                <ToolbarContent>@((MarkupString)toolbar)</ToolbarContent>
-                <EditorContent>@((MarkupString)NewNote.NoteContent)</EditorContent>
-            </BlazoredTextEditor>
+        <div class="dashboard-card">
+            <div class="card-title">Quick Links</div>
+            <div class="card-body d-grid gap-2">
+                <a class="btn btn-outline-light" href="/notes"><i class="bi bi-stickies me-1"></i>All Notes</a>
+                <a class="btn btn-outline-light" href="/calendar"><i class="bi bi-calendar3 me-1"></i>Calendar</a>
+                <a class="btn btn-outline-light" href="/category"><i class="bi bi-tag me-1"></i>Categories</a>
+            </div>
         </div>
     </div>
 </div>
 
 @code {
-    private List<Note> Notes { get; set; } = new();
-    private List<Note> FilteredNotes => ApplyFilters();
+    private List<Note> recentNotes = new();
 
-    private Note NewNote { get; set; } = new();
-    private string searchTerm { get; set; } = string.Empty;
-    private string selectedFilter { get; set; } = string.Empty;
-
-    BlazoredTextEditor richEditor = default!;
-    string toolbar;
+    [Inject] private NotesService NotesService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
-        toolbar = """"
-            <span class="ql-formats">
-                <button class="ql-bold"></button>
-                <button class="ql-italic"></button>
-                <button class="ql-underline"></button>
-                <button class="ql-strike"></button>
-            </span>
-            <span class="ql-formats">
-                <button class="ql-list" value="ordered"></button>
-                <button class="ql-list" value="bullet"></button>
-                <button class="ql-link"></button>
-            </span>
-        """";
-
-        await LoadNotesAsync();
-        NoteState.IsEditing = false;
+        var all = await NotesService.GetNotesAsync();
+        recentNotes = (all ?? new List<Note>())
+        .Where(n => DateTime.TryParse(n.NoteTime, out _))
+        .OrderByDescending(n => DateTime.Parse(n.NoteTime))
+        .Take(5)
+        .ToList();
     }
 
-    private async Task LoadNotesAsync() => Notes = await NotesService.GetNotesAsync();
-
-    private async Task SaveNoteAsync()
-    {
-        NewNote.NoteContent = await richEditor.GetHTML();
-        if (string.IsNullOrWhiteSpace(NewNote.NoteContent)) return;
-
-        if (NoteState.IsEditing) await UpdateNoteAsync();
-        else await AddNoteAsync();
-    }
-
-    private async Task AddNoteAsync()
-    {
-        NewNote.NoteId = Guid.NewGuid().ToString();
-        NewNote.NoteTime = DateTime.UtcNow.ToString("o");
-        NewNote.Status = "PLACED";
-        NewNote.UserId = await localStorage.GetItemAsStringAsync("user_id");
-
-        await NotesService.AddNoteAsync(NewNote);
-        NewNote = new();
-        await LoadNotesAsync();
-        await richEditor.LoadHTMLContent("");
-    }
-
-    private async Task UpdateNoteAsync()
-    {
-        await NotesService.UpdateNoteAsync(NewNote);
-        NewNote = new();
-        NoteState.IsEditing = false;
-        await LoadNotesAsync();
-        await richEditor.LoadHTMLContent("");
-    }
-
-    private async Task DeleteNoteAsync(string noteId)
-    {
-        await NotesService.DeleteNoteAsync(noteId);
-        await LoadNotesAsync();
-    }
-
-    private async Task HandleAddNote()
-    {
-        NewNote = new Note();
-        NoteState.IsEditing = false;
-        await richEditor.LoadHTMLContent("");
-    }
-
-    private async void EditNote(Note note)
-    {
-        NewNote = new Note
-        {
-            NoteId = note.NoteId,
-            NoteTitle = note.NoteTitle,
-            NoteContent = note.NoteContent,
-            NoteTime = DateTime.UtcNow.ToString("o")
-        };
-        NoteState.IsEditing = true;
-        await richEditor.LoadHTMLContent(NewNote.NoteContent);
-    }
-
-    private List<Note> ApplyFilters()
-    {
-        IEnumerable<Note> filtered = Notes ?? new List<Note>();
-
-        // Simple search by NoteTitle
-        var query = (searchTerm ?? string.Empty).Trim();
-        if (!string.IsNullOrEmpty(query))
-        {
-            filtered = filtered.Where(n =>
-                (n?.NoteTitle ?? string.Empty)
-                    .Contains(query, StringComparison.OrdinalIgnoreCase)
-            );
-        }
-
-        if (!string.IsNullOrEmpty(selectedFilter))
-        {
-            DateTime now = DateTime.UtcNow;
-            filtered = selectedFilter switch
-            {
-                "today" => filtered.Where(n => TryParseNoteTime(n, out var d) && d.Date == now.Date),
-                "week"  => filtered.Where(n => TryParseNoteTime(n, out var d) && d >= now.AddDays(-7)),
-                "month" => filtered.Where(n => TryParseNoteTime(n, out var d) && d >= now.AddMonths(-1)),
-                _       => filtered
-            };
-        }
-
-        return filtered.ToList();
-    }
-
-    private static bool TryParseNoteTime(Note n, out DateTime dt)
-    {
-        dt = default;
-        if (n == null || string.IsNullOrEmpty(n.NoteTime)) 
-            return false;
-
-        return DateTime.TryParse(n.NoteTime, out dt);
-    }
-
-    private string TryFormatNoteTime(string noteTime)
+    private string FormatShort(string noteTime)
     {
         if (DateTime.TryParse(noteTime, out var dt))
-            return dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm");
+            return dt.ToLocalTime().ToString("MMM d");
         return string.Empty;
-    }
-
-    private void OnSearchChanged(ChangeEventArgs e)
-    {
-    // Trigger UI refresh
-        StateHasChanged();
     }
 }

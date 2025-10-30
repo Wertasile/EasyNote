@@ -1,0 +1,209 @@
+@page "/calendar"
+@inject NotesService NotesService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<Sidebar></Sidebar>
+
+<div class="calendar-page">
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-sm btn-outline-light" @onclick="PreviousMonth">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <h2 class="m-0">@CurrentMonth.ToString("MMMM yyyy")</h2>
+                <button class="btn btn-sm btn-outline-light" @onclick="NextMonth">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <button class="btn btn-primary btn-sm" @onclick="GoToToday">Today</button>
+        </div>
+
+        <div class="calendar-grid">
+            <!-- Day Headers -->
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+
+            <!-- Calendar Days -->
+            @foreach (var day in CalendarDays)
+            {
+                var isToday = day.Date == DateTime.Today;
+                var hasNotes = NotesByDate.ContainsKey(day.Date);
+                var isCurrentMonth = day.Month == CurrentMonth.Month;
+
+                <div class="calendar-day @(isToday ? "today" : "") @(isCurrentMonth ? "" : "other-month")"
+                    @onclick="((MouseEventArgs e) => SelectDate(day.Date, e))">
+                    <div class="calendar-day-number">@day.Day</div>
+                    @if (hasNotes)
+                    {
+                        <div class="calendar-day-indicator"></div>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (ShowPopover && SelectedDate.HasValue)
+        {
+            <div class="calendar-popover" style="left:@popoverLeftPx; top:@popoverTopPx;">
+                <div class="popover-header d-flex justify-content-between align-items-center">
+                    <div class="fw-semibold">@SelectedDate.Value.ToString("MMMM d, yyyy")</div>
+                    <button class="btn btn-sm btn-outline-light" @onclick="ClosePopover"><i class="bi bi-x"></i></button>
+                </div>
+                <div class="popover-content">
+                    @if (NotesByDate.ContainsKey(SelectedDate.Value))
+                    {
+                        <div class="events-list">
+                            @foreach (var note in NotesByDate[SelectedDate.Value])
+                            {
+                                <button class="event-item w-100 text-start" @onclick="() => OpenNote(note.NoteId)">
+                                    <div class="event-icon"><i class="bi bi-sticky"></i></div>
+                                    <div class="event-content">
+                                        <div class="event-title text-truncate">@((MarkupString)note.NoteTitle)</div>
+                                        <div class="event-time">@TryFormatNoteTime(note.NoteTime)</div>
+                                    </div>
+                                </button>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="no-events">No notes for this date</div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private DateTime CurrentMonth { get; set; } = DateTime.Now;
+    private DateTime? SelectedDate { get; set; }
+    private List<Note> AllNotes { get; set; } = new();
+    private Dictionary<DateTime, List<Note>> NotesByDate { get; set; } = new();
+    private bool ShowPopover { get; set; }
+    private double popoverLeft { get; set; }
+    private double popoverTop { get; set; }
+    private string popoverLeftPx => Math.Max(12, popoverLeft - 10).ToString("0") + "px";
+    private string popoverTopPx => Math.Max(12, popoverTop + 10).ToString("0") + "px";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadNotesAsync();
+        BuildCalendar();
+    }
+
+    private async Task LoadNotesAsync()
+    {
+        AllNotes = await NotesService.GetNotesAsync();
+        GroupNotesByDate();
+    }
+
+    private void GroupNotesByDate()
+    {
+        NotesByDate.Clear();
+        foreach (var note in AllNotes)
+        {
+            if (DateTime.TryParse(note.NoteTime, out var noteDate))
+            {
+                var dateKey = noteDate.Date;
+                if (!NotesByDate.ContainsKey(dateKey))
+                {
+                    NotesByDate[dateKey] = new List<Note>();
+                }
+                NotesByDate[dateKey].Add(note);
+            }
+        }
+    }
+
+    private List<DateTime> CalendarDays { get; set; } = new();
+
+    private void BuildCalendar()
+    {
+        CalendarDays.Clear();
+
+        var firstDayOfMonth = new DateTime(CurrentMonth.Year, CurrentMonth.Month, 1);
+        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+        // Start from Sunday before the first day of the month
+        var startDate = firstDayOfMonth;
+        while (startDate.DayOfWeek != DayOfWeek.Sunday)
+        {
+            startDate = startDate.AddDays(-1);
+        }
+
+        // End on Saturday after the last day of the month
+        var endDate = lastDayOfMonth;
+        while (endDate.DayOfWeek != DayOfWeek.Saturday)
+        {
+            endDate = endDate.AddDays(1);
+        }
+
+        var currentDate = startDate;
+        while (currentDate <= endDate)
+        {
+            CalendarDays.Add(currentDate);
+            currentDate = currentDate.AddDays(1);
+        }
+
+        StateHasChanged();
+    }
+
+    private void PreviousMonth()
+    {
+        CurrentMonth = CurrentMonth.AddMonths(-1);
+        BuildCalendar();
+    }
+
+    private void NextMonth()
+    {
+        CurrentMonth = CurrentMonth.AddMonths(1);
+        BuildCalendar();
+    }
+
+    private void GoToToday()
+    {
+        var today = DateTime.Today;
+        CurrentMonth = new DateTime(today.Year, today.Month, 1);
+        SelectedDate = today;
+        BuildCalendar();
+    }
+
+    private void SelectDate(DateTime date, MouseEventArgs e)
+    {
+        SelectedDate = date;
+        if (date.Month != CurrentMonth.Month)
+        {
+            CurrentMonth = new DateTime(date.Year, date.Month, 1);
+            BuildCalendar();
+        }
+        popoverLeft = e.ClientX;
+        popoverTop = e.ClientY;
+        ShowPopover = true;
+    }
+
+    private string TryFormatNoteTime(string noteTime)
+    {
+        if (DateTime.TryParse(noteTime, out var dt))
+            return dt.ToLocalTime().ToString("HH:mm");
+        return string.Empty;
+    }
+
+    [Inject]
+    private NavigationManager Navigation { get; set; } = default!;
+
+    private void OpenNote(string noteId)
+    {
+        // Navigate to notes with noteId query to open the editor on that note
+        Navigation.NavigateTo($"/notes?noteId={Uri.EscapeDataString(noteId)}");
+    }
+
+    private void ClosePopover()
+    {
+        ShowPopover = false;
+    }
+}

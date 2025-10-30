@@ -5,29 +5,38 @@
 @inject NavigationManager Navigation
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
-<div class="border-style d-flex flex-column p-2 gap-3 sidebar">
-    <!-- TITLE -->
-    <div><h2>EASYNOTE</h2></div>
-    <!-- USER PROFILE -->
-    <div><i class="bi bi-person-circle px-1"></i>@CurrentUser.Username</div>
+<div class="border-style d-flex flex-column p-2 gap-2 sidebar @(isCollapsed ? "collapsed" : string.Empty)">
+    <div class="sidebar-header d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+            <div class="brand-dot"></div>
+            <h5 class="m-0"><span class="label">EasyNote</span></h5>
+        </div>
+        <button class="sidebar-item" title="Toggle" @onclick="ToggleCollapse"><i class="bi bi-layout-sidebar"></i><span
+                class="label">Toggle</span></button>
+    </div>
 
-    <div class="sidebar-item" @onclick="SignOut"><i class="bi bi-box-arrow-right px-1"></i>LOGOUT</div> 
-    <div class="sidebar-item" @onclick="OnAddNoteClicked"><i class="bi bi-plus px-1"></i>ADD NOTE</div>
-    <div class="sidebar-item"><i class="bi bi-house px-1"></i>HOME</div>
-    <div class="sidebar-item"><i class="bi bi-sticky px-1"></i>NOTES</div>
-    <div class="sidebar-item"><i class="bi bi-bookmark px-1"></i>SHORTCUTS</div>
-    <div class="sidebar-item"><i class="bi bi-calendar-event px-1"></i>CALENDAR</div>
-    <div class="sidebar-item"><i class="bi bi-tag px-1"></i>CATEGORIES</div>
-    <div class="sidebar-item"><i class="bi bi-share px-1"></i>SHARED</div>
-      
+    <div class="sidebar-item" @onclick='() => NavigateTo("/home")'><i class="bi bi-house"></i><span
+            class="label">Home</span></div>
+    <div class="sidebar-item" @onclick='() => NavigateTo("/notes")'><i class="bi bi-stickies"></i><span
+            class="label">Notes</span></div>
+    <div class="sidebar-item" @onclick='() => NavigateTo("/notes")'><i class="bi bi-plus"></i><span class="label">Add
+            Note</span></div>
+    <div class="sidebar-item" @onclick="() => NavigateToCalendar()"><i class="bi bi-calendar-event"></i><span
+            class="label">Calendar</span></div>
+    <div class="sidebar-item" @onclick='() => NavigateTo("/category")'><i class="bi bi-tag"></i><span
+            class="label">Categories</span></div>
+    <div class="sidebar-item" @onclick="SignOut"><i class="bi bi-box-arrow-right"></i><span class="label">Logout</span>
+    </div>
+
 </div>
 
 @code {
     [Parameter]
     public User CurrentUser { get; set; } = new();
-    
+
     [Parameter]
     public EventCallback OnAddNote { get; set; }
+    private bool isCollapsed = true;
 
     protected override async Task OnInitializedAsync()
     {
@@ -38,14 +47,35 @@
     private async Task OnAddNoteClicked()
     {
         await OnAddNote.InvokeAsync(); // Properly trigger the callback
-        Navigation.NavigateTo("/home");
+        Navigation.NavigateTo("/notes");
     }
 
-    private async Task SignOut(){
+    private async Task SignOut()
+    {
         await localStorage.RemoveItemAsync("id_token");
         await localStorage.RemoveItemAsync("access_token");
         await localStorage.RemoveItemAsync("tokens");
         Navigation.NavigateTo("/");
+    }
+
+    private void NavigateTo(string url)
+    {
+        Navigation.NavigateTo(url);
+    }
+
+    private void NavigateToCalendar()
+    {
+        Navigation.NavigateTo("/calendar");
+    }
+
+    private string GetActiveClass(string url)
+    {
+        return Navigation.Uri.EndsWith(url, StringComparison.OrdinalIgnoreCase) ? "active" : string.Empty;
+    }
+
+    private void ToggleCollapse()
+    {
+        isCollapsed = !isCollapsed;
     }
 
     private async Task GetUserId()
@@ -62,18 +92,21 @@
         }
     }
 
-    private async Task GetUser(){
+    private async Task GetUser()
+    {
         var user = await UserService.GetUserDetailsAsync();
         CurrentUser.Username = user.Username;
         Console.WriteLine(user.Username);
     }
 
-    private async Task DeleteUser(){
-        
+    private async Task DeleteUser()
+    {
+
     }
 
-    private async Task UpdateUser(){
-        
+    private async Task UpdateUser()
+    {
+
     }
 
 

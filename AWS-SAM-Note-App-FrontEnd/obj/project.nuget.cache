@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hsMSLf/U+9TuOzE9aPGXpqmz+YX1qCf8kmlJ3BtGDpcF+AxHvKeilIJNyOpHDsLMBdeKi1kxdqf53PpBIT5Fgw==",
+  "dgSpecHash": "iZ6i0v3Oaug=",
   "success": true,
   "projectFilePath": "D:\\AWS-SAM-Note-App\\AWS-SAM-Note-App\\AWS-SAM-Note-App-FrontEnd\\AWS-SAM-Note-App-FrontEnd.csproj",
   "expectedPackageFiles": [
@@ -45,7 +45,7 @@
     "C:\\Users\\arfan\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.1\\microsoft.jsinterop.webassembly.7.0.1.nupkg.sha512",
     "C:\\Users\\arfan\\.nuget\\packages\\microsoft.net.illink.analyzers\\7.0.100-1.23211.1\\microsoft.net.illink.analyzers.7.0.100-1.23211.1.nupkg.sha512",
     "C:\\Users\\arfan\\.nuget\\packages\\microsoft.net.illink.tasks\\7.0.100-1.23211.1\\microsoft.net.illink.tasks.7.0.100-1.23211.1.nupkg.sha512",
-    "C:\\Users\\arfan\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.1\\microsoft.net.sdk.webassembly.pack.8.0.1.nupkg.sha512",
+    "C:\\Users\\arfan\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.10\\microsoft.net.sdk.webassembly.pack.9.0.10.nupkg.sha512",
     "C:\\Users\\arfan\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\arfan\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\arfan\\.nuget\\packages\\runtime.any.system.collections\\4.3.0\\runtime.any.system.collections.4.3.0.nupkg.sha512",
